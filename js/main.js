@@ -2,9 +2,7 @@ jQuery(function ($) {
   var name_bar_data;
   var countries_label = [];
 
-
   $(document).ready(function () {
-
     include();
   });
 
@@ -13,7 +11,6 @@ jQuery(function ($) {
       name_bar_data = data;
       appendFilterBar();
     });
-
   }
 
   function parsPriceCard(nameFilter) {
@@ -62,7 +59,7 @@ jQuery(function ($) {
   }
 
   function appendPriceCard(object) {
-    for (var i = 0; i <= object.length; i++) {
+    for (var i = 0; i < object.length; i++) {
       $("#loadPriseCardZone").append(" <div class='price-card'>" +
           "<div class='top-panel'>" +
           "<div class='text-part'>" +
@@ -101,7 +98,7 @@ jQuery(function ($) {
 
     });
     console.log(urlAll);
-    for (var i = 0; i <= urlAll.length; i++) {
+    for (var i = 0; i < urlAll.length; i++) {
       $.getJSON(urlAll[i], function (data) {
         console.log(data);
         appendPriceCard(data);
