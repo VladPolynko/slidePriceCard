@@ -1,7 +1,5 @@
 @font-face {
     font-family: "Segoe UI";
-    src: url("../themes/landingvisa/assets/fonts/SegoeUISemiBold.eot");
-    src: url("../themes/landingvisa/assets/fonts/SegoeUISemiBold.eot?#iefix")format("embedded-opentype"),
     url("../themes/landingvisa/assets/fonts/SegoeUISemiBold.woff") format("woff"),
     url("../themes/landingvisa/assets/fonts/SegoeUISemiBold.ttf") format("truetype");
     font-style: normal;
