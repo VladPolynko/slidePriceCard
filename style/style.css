@@ -1,109 +1,153 @@
 @font-face {
-    font-family: "Segoe UI";
-    url("../themes/landingvisa/assets/fonts/SegoeUISemiBold.woff") format("woff"),
-    url("../themes/landingvisa/assets/fonts/SegoeUISemiBold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 500;
+  font-family: "Segoe UI";
+url("../themes/landingvisa/assets/fonts/SegoeUISemiBold.woff") format("woff"),
+url("../themes/landingvisa/assets/fonts/SegoeUISemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
 }
+
 html,
 body {
-    height: 100%;
-    font-size: 1em;
+  height: 100%;
+  font-size: 1em;
 }
+
 .filter-bar {
-    margin: 0 0 10px;
-    float: left;
-}
-.filter-bar div{
-    text-align: center;
-    min-width:89px;
-    padding: 12px;
-    border: 1px solid rgb(253, 195, 0);
-    float: left;
-    color: rgb(0, 143, 183);
-    margin: 5px 2px 2px 1px;
-    line-height:24px;
-
-}
-.active-filter{       /*active*/
-    color: white;
-    background: #0E6EB8;
+  margin: 0 0 10px;
+  float: left;
 }
 
-.filter-bar div:hover{
-    color: white;
-    background: #0E6EB8;
-}
-.price-card{
-    float: left;
-    margin: 12px;
-    width: 300px;
-    height: 390px;
-    background: #404040;
-    font-family: "Segoe UI";
-    font-size:24px;
-    font-weight:100;
-}
-.price-card:hover{
-    margin-top: 20px;
+.filter-bar div {
+  text-align: center;
+  min-width: 89px;
+  padding: 12px;
+  border: 1px solid rgb(253, 195, 0);
+  float: left;
+  color: rgb(0, 143, 183);
+  margin: 5px 2px 2px 1px;
+  line-height: 24px;
+  cursor: pointer;
 }
 
-.top-panel{
-    background: #0e6eb8;
-    height: 90px;
-    padding: 25px;
-    color: white;
+.active-filter {  /*active*/
+  color: white !important;
+  background: #0E6EB8;
 }
-.text-part{
-    padding-right: 93px;
-    position: relative;
-    text-align: left;
-    float:left;
-    width: 157px;
+
+.filter-bar div:hover {
+  color: white;
+  background: #0E6EB8;
 }
-.type-1 span{
-    border-bottom: 1px solid #fff;
+
+.loadZonePriseCard_wrapper {
+  overflow: hidden;
+  min-height: 460px;
+  min-width: 650px;
+  outline: 1px dashed #777777;
+  float: left;
 }
-.days{
-    margin: -8px 0 0 0;
-    font-size:18px;
+
+.loadZonePriseCard {
+  width: 2200px;
+  overflow: hidden;
+  float: left;
+  position: relative;
 }
-.price{
-    width: 65px;
-    line-height: 18px;
-    margin-left: 15px;
-    margin-top: 5px;
-    text-align: left ;
-    font-size:30px;
-    font-weight:400;
-    float:left;
+
+.loadPriseCardZone {
+  float: left;
+  width: 650px;
+  height: 415px;
 }
-.card-body{
-    font-size:16px;
-    color: rgb(173, 172, 172);
-    padding: 25px;
+
+.price-card {
+  float: left;
+  margin: 12px;
+  width: 300px;
+  height: 390px;
+  background: #404040;
+  font-family: "Segoe UI";
+  font-size: 24px;
+  font-weight: 100;
+}
+
+.top-panel {
+  background: #0e6eb8;
+  height: 90px;
+  padding: 25px;
+  color: white;
+}
+
+.text-part {
+  padding-right: 93px;
+  position: relative;
+  text-align: left;
+  float: left;
+  width: 157px;
+}
+
+.type-1 span {
+  border-bottom: 1px solid #fff;
+}
+
+.days {
+  margin: -8px 0 0 0;
+  font-size: 18px;
+}
+
+.price {
+  width: 65px;
+  line-height: 18px;
+  margin-left: 15px;
+  margin-top: 5px;
+  text-align: left;
+  font-size: 30px;
+  font-weight: 400;
+  float: left;
+}
+
+.card-body {
+  font-size: 16px;
+  color: rgb(173, 172, 172);
+  padding: 25px;
 
 }
-.card-body p{
-    border-bottom: 1px solid ;
-    font-weight:200;
-    line-height:18px;
-    font-size:16px;
-    padding-bottom: 7px;
+
+.card-body p {
+  border-bottom: 1px solid;
+  font-weight: 200;
+  line-height: 18px;
+  font-size: 16px;
+  padding-bottom: 7px;
 }
-.url-holder{
-    text-align: center;
-    margin:21px 0 0 0;
+
+.url-holder {
+  text-align: center;
+  margin: 21px 0 0 0;
 }
-.type-2{
-    border: 1px solid #0e6eb8;
-    font-size:18px;
-    padding: 2px 8px 6px 8px;
-    color: white;
-    cursor: pointer;
+
+.type-2 {
+  border: 1px solid #0e6eb8;
+  font-size: 18px;
+  padding: 2px 8px 6px 8px;
+  color: white;
+  cursor: pointer;
 }
-.type-2:hover{
-    text-decoration: none;
-    border: 1px solid rgb(253, 195, 0);
-    color:rgb(253, 195, 0);
+
+.type-2:hover {
+  text-decoration: none;
+  border: 1px solid rgb(253, 195, 0);
+  color: rgb(253, 195, 0);
+}
+
+.price-card_nav {
+  margin: 10px 29px;
+}
+
+.back_slide {
+  float: left;
+}
+
+.next_slide {
+  float: right;
 }

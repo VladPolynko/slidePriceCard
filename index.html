@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,56 +12,42 @@
 </head>
 <body>
 
-
-<div id="v_slider">
-  <div class="container">
-    <div class="row">
-      <div id="filter-bar" class="filter-bar">
-        <div class="filter" data-filter="all">Все</div>
+<div id="wrapper_slider">
+  <div id="v_slider">
+    <div class="container-fluid">
+      <div class="row">
+        <div id="filter-bar" class="filter-bar">
+          <div class="filter active-filter" data-filter="all">Все</div>
+        </div>
       </div>
-    </div>
 
-
-
-    <div id="loadPriseCardZone" class="row">
-
-      <div class="price-card">
-        <div class="top-panel">
-          <div class="text-part">
-            <p class="type-1">
-              <span>Національна</span>
-            </p>
-            <p class="days">
-              360/360
-            </p>
-          </div>
-          <div class="price">
-            380€
+      <div class="loadZonePriseCard_wrapper">
+        <div id="loadPriseCardZone" class="loadPriseCardZone">
+          <div class="loadZonePriseCard">
+            <!-- load-->
           </div>
         </div>
-        <div class="card-body">
-          <p>Консультація безкоштовна</p>
-          <p>Особиста подача</p>
-          <p>Реєстрація безкоштовна</p>
-          <p>Оформлюється - від 4 до 8 тижнів</p>
-          <p>Додаткові збори - 470 гривень за послуги Візового Центру</p>
-          <div class="url-holder">
-            <a href="#" class="type-2" data-toggle="modal" data-target="#myModal2">
-              Дізнатись детальніше
+        <div id="price_card_nav" class="price-card_nav">
+          <div class="row">
+          <span class="back_slide">
+            <a id="btn_back" class="btn btn-sm btn-primary">
+              <span class="glyphicon glyphicon-chevron-left">
+              </span>
             </a>
+          </span>
+          <span class="next_slide">
+            <a id="btn_next" class="btn btn-sm btn-primary">
+              <span class="glyphicon glyphicon-chevron-right">
+              </span>
+            </a>
+          </span>
           </div>
         </div>
+
       </div>
-
-
     </div>
-
-
-
-
   </div>
 </div>
-
 <!--                                        end-->
 
 <script src="js/lib/jquery.js"></script>
@@ -69,6 +55,5 @@
 <script src="js/lib/bootstrap.js"></script>
 
 <script src="js/main.js"></script>
-</div>
 </body>
 </html>

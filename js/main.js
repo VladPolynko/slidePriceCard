@@ -1,68 +1,62 @@
 jQuery(function ($) {
   var name_bar_data;
-  var countries_label = [];
+  var data_filter = "all";
+  var cards = [];
+  var showCountCards = 2;   //kol cards
+  var currentPage = 0;      //some page
+  var counters = [];        //
 
 
   $(document).ready(function () {
-
     include();
   });
 
   function include() {
-    $.getJSON('include/name.json', function (data) {
+    $.getJSON('include/include.json', function (data) {
       name_bar_data = data;
       appendFilterBar();
     });
-
   }
-
-  function parsPriceCard(nameFilter) {
-    console.log(name_bar_data[nameFilter]['url']);
-    var jsonUrl = name_bar_data[nameFilter]['url'];
-
-    $.getJSON(jsonUrl, function (data) {
-      console.log(data);
-      appendPriceCard(data);
-    });
-  }
-
-  $(document).on('click', '#filter-bar div', function (e) {
-    var data_filter = $(this).data("filter");
-    $("#loadPriseCardZone").html("");
-    var index_arr = countries_label.indexOf(data_filter);
-    console.log(index_arr);
-
-    if (index_arr == -1) {
-      appendPriceCardAll();
-      console.log('all');
-    } else if (index_arr != -1) {
-      parsPriceCard(data_filter);
-    }
-
-  });
 
   function appendFilterBar() {
-
-    for (var lable in name_bar_data) {
-      countries_label.push(lable);
-    }
-    console.log(countries_label);
-
-    $('#filter-bar').html('');
-
-    $('#filter-bar').append("<div class='filter' data-filter='all'>Все</div>");
-
-    for (var i = 0; i < countries_label.length; i++) {
-      console.log(name_bar_data[countries_label[i]]);
-      console.log(name_bar_data[countries_label[i]]['countries']);
+    for (var i = 0; i < name_bar_data.length; i++) {
       $('#filter-bar').append(
-          "<div class='filter' data-filter='" + name_bar_data[countries_label[i]]['countries'] + "'>" + name_bar_data[countries_label[i]]['title'] + "</div>")
-
+          "<div class='filter' data-filter='" + name_bar_data[i]['countries'] + "'>" + name_bar_data[i]['title'] + "</div>");
     }
+    parseOnClickFilterBar();
   }
 
-  function appendPriceCard(object) {
-    for (var i = 0; i <= object.length; i++) {
+  function parseOnClickFilterBar() {
+    cards = [];
+    $("#loadPriseCardZone").html("");
+
+    if (data_filter == "all") {
+      cards = name_bar_data;
+    } else {
+      for (var i in name_bar_data) {
+        if (name_bar_data[i]["countries"] == data_filter) {
+          cards.push(name_bar_data[i]);
+        }
+      }
+    }
+    appendPriceCard(cards, showCountCards, currentPage);
+  }
+
+  function appendPriceCard(card, count, page) {
+
+    var localObj = [];
+    for (var i in card) {
+      for (var j in card[i]["slides"]) {
+        localObj.push(card[i]["slides"][j]);
+      }
+    }
+    var counter;
+    if ((count + page) > localObj.length) {
+      counter = localObj.length;
+    } else {
+      counter = count + page;
+    }
+    for (var i = page; i < counter; i++) {
       $("#loadPriseCardZone").append(" <div class='price-card'>" +
           "<div class='top-panel'>" +
           "<div class='text-part'>" +
@@ -70,19 +64,19 @@ jQuery(function ($) {
           "<span>Національна</span>" +
           "</p>" +
           "<p class='days'>" +
-          object[i]['durations'] +
+          localObj[i]['durations'] +
           "</p>" +
           "</div>" +
           "<div class='price'>" +
-          "" + object[i]['price'] + "" +
+          "" + localObj[i]['price'] + "" +
           "</div>" +
           "</div>" +
           " <div class='card-body'>" +
-          "<p>" + object[i]['proviso'][0] + "</p>" +
-          "<p>" + object[i]['proviso'][1] + "</p>" +
-          "<p>" + object[i]['proviso'][2] + "</p>" +
-          "<p>" + object[i]['proviso'][3] + "</p>" +
-          "<p>" + object[i]['proviso'][4] + "</p>" +
+          "<p>" + localObj[i]['proviso'][0] + "</p>" +
+          "<p>" + localObj[i]['proviso'][1] + "</p>" +
+          "<p>" + localObj[i]['proviso'][2] + "</p>" +
+          "<p>" + localObj[i]['proviso'][3] + "</p>" +
+          "<p>" + localObj[i]['proviso'][4] + "</p>" +
           "<div class='url-holder'>" +
           "<a href='#' class='type-2'>" +
           "Дізнатись детальніше" +
@@ -93,21 +87,51 @@ jQuery(function ($) {
     }
   }
 
-  function appendPriceCardAll() {
-    var urlAll = [];
-    console.log(name_bar_data);
-    $.each(name_bar_data, function (key) {
-      urlAll.push(name_bar_data[key]['url']);
+  $("#wrapper_slider").on('click', '#filter-bar div', function () {
+    currentPage = 0;
+    data_filter = $(this).data("filter");
+    $("#filter-bar div").removeClass('active-filter');
+    $(this).addClass('active-filter');
 
-    });
-    console.log(urlAll);
-    for (var i = 0; i <= urlAll.length; i++) {
-      $.getJSON(urlAll[i], function (data) {
-        console.log(data);
-        appendPriceCard(data);
-      });
+    parseOnClickFilterBar();
+
+  });
+  function addParams() {
+    counters = [];
+    for (var i in cards) {
+      for (var j in cards[i]["slides"]) {
+        counters.push(cards[i]['slides'][j]);
+      }
     }
   }
+
+  function next_page() {
+    ++currentPage;
+    parseOnClickFilterBar();
+  }
+
+  function preff_page() {
+    --currentPage;
+    parseOnClickFilterBar();
+  }
+
+  $("#price_card_nav").on('click', '#btn_back', function () {
+    addParams();
+    console.log(currentPage);
+    if (currentPage > 0) {
+      preff_page();
+      console.log('back');
+    }
+
+  });
+  $("#price_card_nav").on('click', '#btn_next', function () {
+    addParams();
+    console.log(counters.length);
+    if (currentPage < (counters.length - 2)) {
+      next_page();
+      console.log('next');
+    }
+  });
 
 });
 
